@@ -1,53 +1,27 @@
-export enum TaskStatus {
-    OPEN = 'OPEN',
-    IN_PROGRESS = 'IN_PROGRESS',
-    DONE = 'DONE',
+export enum Status {
+    CONFIRMED = 'CONFIRMED',
+    PENDING = 'PENDING'
 }
 
-export class Task {
+export class CitaStructure {
+    private id: number;
+    private motivo: string;
+    private nombre: string;
+    private date: Date;
+    private time: string;
+    private place: string;
+    private confirmed: Status;
+    private phone: string;
 
-    private id: string;
-    private title: string;
-    private description: string;
-    public status: TaskStatus;
-
-    constructor(id: string, title: string, description: string, status: TaskStatus) {
+    constructor (id: number, motivo: string, nombre: string, date: Date, time: string, place: string, confirmed: Status, phone: string) {
         this.id = id;
-        this.title = title;
-        this.description = description;
-        this.status = status;
+        this.motivo = motivo;
+        this.nombre = nombre;
+        this.date = date;
+        this.time = time;
+        this.place = place;
+        this.confirmed = confirmed;
+        this.phone = phone;
     }
 
-    public getId(): string {
-        return this.id;
-    }
-
-    public setId(id: string): void {
-        this.id = id;
-    }
-
-    public getTitle(): string {
-        return this.title;
-    }
-
-    public setTitle(title: string): void {
-        this.title = title;
-    }
-
-    public getDescription(): string {
-        return this.description;
-    }
-
-    public setDescription(description: string): void {
-        this.description = description;
-    }
-
-    public getStatus(): TaskStatus {
-        return this.status;
-    }
-
-    public setStatus(status: TaskStatus): void {
-        this.status = status;
-    }
-    
 }

@@ -1,11 +1,12 @@
 import { Body, Controller, Get, Param, Post, Delete, Put } from '@nestjs/common';
 import { TaskService } from './task.service';
-import { CreateTaskDTO as taskDTO, UpdateTaskDTO } from '../dto/task.dto';
+import { CitaDTO } from '../dto/task.dto';
 
 @Controller()
 export class TaskController {
     constructor(private taskservice: TaskService) { }
 
+    /*
     @Get()
     async getAll() {
         console.log("Get All Metod")
@@ -35,4 +36,5 @@ export class TaskController {
         console.log("Put Metod",updatedTask);
         return this.taskservice.update(updatedTask);
     }
+    */
 }

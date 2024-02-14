@@ -1,24 +1,26 @@
-import { TaskStatus } from "../task/task.entity";
-import { IsNotEmpty, IsOptional, IsString, IsIn } from "class-validator"
+import { Status } from "../task/task.entity";
+import { IsNotEmpty, IsString, IsIn, IsNumber, IsDate } from "class-validator"
 
-export class CreateTaskDTO {  
-    @IsString() 
+export class CitaDTO {  
     @IsNotEmpty()
-    title: string;
-
-    @IsString()
-    description: string;
-}
-
-export class UpdateTaskDTO {
+    @IsNumber()
     id: string;
-    @IsString() 
+    @IsString()
     @IsNotEmpty()
-    @IsOptional()
-    title: string;
-    @IsString() 
+    motivo: string;
+    nombre: string;
+    @IsDate()
     @IsNotEmpty()
-    description: string;
-    @IsIn([TaskStatus.OPEN, TaskStatus.IN_PROGRESS, TaskStatus.DONE])
-    status: TaskStatus;
+    date: Date;
+    @IsString()
+    @IsNotEmpty()
+    time: string;
+    place: string;
+    @IsIn([Status.CONFIRMED, Status.PENDING])
+    confirmed: Status;
+    @IsString()
+    @IsNotEmpty()
+    phone: string;
+
+
 }
