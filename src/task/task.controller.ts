@@ -1,40 +1,41 @@
-import { Body, Controller, Get, Param, Post, Delete, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CitaDTO } from '../dto/task.dto';
 
 @Controller()
 export class TaskController {
-    constructor(private taskservice: TaskService) { }
+  constructor(private taskService: TaskService) {}
 
-    /*
-    @Get()
-    async getAll() {
-        console.log("Get All Metod")
-        return this.taskservice.getAll();
-    }
+  @Get()
+  async getAll() {
+    return this.taskService.getAll();
+  }
 
-    @Post()
-    async createTask(@Body() newTask: taskDTO) {
-        console.log("Post Metod id: ",newTask)
-        return this.taskservice.createTask(newTask.title, newTask.description);
-    }
+  @Post()
+  async createTask(@Body() cita: CitaDTO) {
+    return this.taskService.createTask(cita);
+  }
 
-    @Get(':id')
-    async getOne(@Param("id") id: string) {
-        console.log("Get Metod id: ",id)
-        return this.taskservice.getOne(id);
-    }
+  @Delete(':id')
+  async deleteTask(@Param('id') id: number) {
+    return this.taskService.delete(id);
+  }
 
-    @Delete(':id')
-    async delete(@Param("id") id: string) {
-        console.log("Delete Metod id:",id)
-        return this.taskservice.delete(id);
-    }
+  @Put()
+  async updateTask(@Body() cita: CitaDTO) {
+    return this.taskService.update(cita);
+  }
 
-    @Put()
-    async update(@Body() updatedTask: UpdateTaskDTO ) {
-        console.log("Put Metod",updatedTask);
-        return this.taskservice.update(updatedTask);
-    }
-    */
+  @Get('/confirm/:id')
+  async confirmTask(@Param('id') id: number) {
+    return this.taskService.confirm(id);
+  }
 }
