@@ -86,6 +86,7 @@ export class TaskService {
         updatedCita.confirmed,
         updatedCita.phone,
       );
+
       return true;
     }
     throw new HttpException('Cita no encontrada', 404);
