@@ -25,7 +25,7 @@ export class TaskController {
   }
 
   @Delete(':id')
-  async deleteTask(@Param('id') id: number) {
+  async deleteTask(@Param('id') id: string) {
     return this.taskService.delete(id);
   }
 
@@ -35,7 +35,7 @@ export class TaskController {
   }
 
   @Get('/confirm/:id')
-  async confirmTask(@Param('id') id: number) {
+  async confirmTask(@Param('id') id: string) {
     return this.taskService.confirm(id);
   }
 }

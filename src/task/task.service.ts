@@ -9,7 +9,7 @@ import { uptime } from 'process';
 export class TaskService {
   private citas: CitaStructure[] = [
     new CitaStructure(
-      1,
+      uuid(),
       'Dolor de cabeza',
       'Juan',
       new Date(),
@@ -19,7 +19,7 @@ export class TaskService {
       '123456789',
     ),
     new CitaStructure(
-      2,
+      uuid(),
       'Dolor de estomago',
       'Pedro',
       new Date(),
@@ -29,7 +29,7 @@ export class TaskService {
       '123456789',
     ),
     new CitaStructure(
-      3,
+      uuid(),
       'Dolor de espalda',
       'Maria',
       new Date(),
@@ -61,7 +61,7 @@ export class TaskService {
     return true;
   }
 
-  public delete(id: number): boolean {
+  public delete(id: string): boolean {
     const idx = this.citas.findIndex((cita) => cita.getId() == id);
     if (idx !== -1) {
       this.citas.splice(idx, 1);
@@ -72,12 +72,11 @@ export class TaskService {
 
   public update(updatedCita: CitaDTO): boolean {
     updatedCita.date = new Date(updatedCita.date);
-    const idx = this.citas.findIndex(
-      (cita) => cita.getId() == Number(updatedCita.id),
-    );
+
+    const idx = this.citas.findIndex((cita) => cita.getId() == updatedCita.id);
     if (idx >= 0) {
       this.citas[idx] = new CitaStructure(
-        Number(updatedCita.id),
+        updatedCita.id,
         updatedCita.motivo,
         updatedCita.nombre,
         updatedCita.date,
@@ -86,13 +85,13 @@ export class TaskService {
         updatedCita.confirmed,
         updatedCita.phone,
       );
-
+      console.log(this.citas[idx]);
       return true;
     }
     throw new HttpException('Cita no encontrada', 404);
   }
 
-  public confirm(id: number): Boolean {
+  public confirm(id: string): Boolean {
     const idx = this.citas.findIndex((cita) => cita.getId() == id);
     if (idx === -1) {
       throw new HttpException('Cita no encontrada', 404);

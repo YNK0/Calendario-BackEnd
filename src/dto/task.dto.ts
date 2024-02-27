@@ -3,7 +3,6 @@ import { IsNotEmpty, IsString, IsIn, IsNumber, IsDate } from 'class-validator';
 
 export class CitaDTO {
   @IsNotEmpty()
-  @IsNumber()
   id: string;
   @IsString()
   @IsNotEmpty()

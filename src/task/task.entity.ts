@@ -4,7 +4,7 @@ export enum Status {
 }
 
 export class CitaStructure {
-  private id: number;
+  private id: string;
   private motivo: string;
   private nombre: string;
   private date: Date;
@@ -14,7 +14,7 @@ export class CitaStructure {
   private phone: string;
 
   constructor(
-    id: number,
+    id: string,
     motivo: string,
     nombre: string,
     date: Date,
@@ -33,8 +33,8 @@ export class CitaStructure {
     this.phone = phone;
   }
 
-  public getId(): number {
-    return this.id;
+  public getId(): string {
+    return this.id.toString();
   }
 
   public getMotivo(): string {
@@ -65,7 +65,7 @@ export class CitaStructure {
     return this.phone;
   }
 
-  public setId(id: number): void {
+  public setId(id: string): void {
     this.id = id;
   }
 
